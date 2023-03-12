@@ -17,6 +17,7 @@ public class client {
 	static Socket clientSocket;
 	static JTextArea receivedTextArea;
 	static JLabel countLabel;
+	static JLabel dateLabel;
 	
 	public static void main(String[] args) throws Exception {
 	      
@@ -39,6 +40,11 @@ public class client {
 	    countLabel.setBounds(20, 100, 300, 30);
 	    frame.getContentPane().add(countLabel);
 	    countLabel.setVisible(false);
+	    
+	    dateLabel = new JLabel("Server's Date");
+	    dateLabel.setBounds(20, 140, 400, 30);
+	    frame.getContentPane().add(dateLabel);
+	    dateLabel.setVisible(false);
 	    
 	    JLabel sendLabel = new JLabel("Send Numbers");
 	    sendLabel.setBounds(20, 180, 100, 30);
@@ -84,6 +90,7 @@ public class client {
 						sendButton.setVisible(true);
 						sendLabel.setVisible(true);
 						sendTextField.setVisible(true);
+						dateLabel.setVisible(true);
 						countLabel.setVisible(true);
 						receivedTextArea.setVisible(true);
 						receivedTextAreaScroll.setVisible(true);
@@ -108,6 +115,7 @@ public class client {
 	    				sendButton.setVisible(false);
 						sendLabel.setVisible(false);
 						sendTextField.setVisible(false);
+						dateLabel.setVisible(false);
 						countLabel.setVisible(false);
 						receivedTextArea.setVisible(false);
 						receivedTextAreaScroll.setVisible(false);
@@ -161,6 +169,7 @@ public class client {
     				sendButton.setVisible(false);
   					sendLabel.setVisible(false);
   					sendTextField.setVisible(false);
+  					dateLabel.setVisible(false);
   					countLabel.setVisible(false);
   					receivedTextArea.setVisible(false);
   					receivedTextAreaScroll.setVisible(false);
@@ -203,7 +212,12 @@ public class client {
 					receivedSentence = inFromServer.readLine();	
 					//System.out.println(receivedSentence);
 					
-					if (receivedSentence.startsWith("-Results")) {
+					if (receivedSentence.startsWith("-Date")) {
+	    			
+						String []strings = receivedSentence.split(";");
+						dateLabel.setText("Server's Date: " + strings[1]);
+	    				
+	    			} else if (receivedSentence.startsWith("-Results")) {
 	    				    	
 	    				String []strings = receivedSentence.split(",");
 	    				receivedTextArea.setText("Sum is: " + strings[1] + "\n");

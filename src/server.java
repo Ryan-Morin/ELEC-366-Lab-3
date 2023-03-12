@@ -130,36 +130,36 @@ public class server {
  	 }}).start();
  	  
  	  
- 	// //thread to always get the date and send to clients
- 	//   new Thread (new Runnable(){ @Override
-	//    		public void run() {
+ 	//thread to always get the date and send to clients
+ 	  new Thread (new Runnable(){ @Override
+	   		public void run() {
  		  
- 	// 	  		try {
+ 		  		try {
  		  			
- 	// 	  			DataOutputStream outToClient;
+ 		  			DataOutputStream outToClient;
  		  			
- 	// 	  			while (true) {
+ 		  			while (true) {
  		  				
- 	// 	  				Date now = new Date();
- 	// 	  				SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy  h:m:s a z");
+ 		  				Date now = new Date();
+ 		  				SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy  h:m:s a z");
  		  				
  		  				
- 	// 	  				for (int i = 0; i < Clients.size(); i++) { 	    					
+ 		  				for (int i = 0; i < Clients.size(); i++) { 	    					
 
- 	// 	  					outToClient = new DataOutputStream(Clients.get(i).connectionSocket.getOutputStream()); 		  					
-    // 						outToClient.writeBytes("-Date;" + dateFormatter.format(now) + "\n");    						
+ 		  					outToClient = new DataOutputStream(Clients.get(i).connectionSocket.getOutputStream()); 		  					
+    						outToClient.writeBytes("-Date;" + dateFormatter.format(now) + "\n");    						
     						
- 	//     				}
+ 	    				}
  		  			 	
- 	// 	  				Thread.sleep(1000);
+ 		  				Thread.sleep(1000);
  		  				
- 	// 	  			}
+ 		  			}
  		  			
- 	// 	  		} catch (Exception ex) {
+ 		  		} catch (Exception ex) {
  		  			
- 	// 	  		}
+ 		  		}
  		  		
- 	//  }}).start();
+ 	 }}).start();
  	  
 		
  	  
